@@ -2,6 +2,8 @@
 using APIPublications.Core.Core;
 using APIPublications.Model.request;
 using APIPublications.Model.response;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
@@ -20,6 +22,7 @@ namespace APIPublications.Controllers
         }
 
         [HttpPost("new")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult<bool> NewPost(PublicationRequestModel publicationRequestModel)
         {
             PostCore postCore = new PostCore(utilitiesAPI.GetDatabaseConnection("DBMyPosts"));
@@ -27,12 +30,14 @@ namespace APIPublications.Controllers
         }
 
         [HttpGet("list/{idUser}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult<List<PublicationResponseModel>> ListPost(int idUser)
         {
             PostCore postCore = new PostCore(utilitiesAPI.GetDatabaseConnection("DBMyPosts"));
             return postCore.ListPostOfAnUser(idUser);
         }
         [HttpDelete("delete/{idPost}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult<bool> DeletePost(int idPost)
         {
             PostCore postCore = new PostCore(utilitiesAPI.GetDatabaseConnection("DBMyPosts"));

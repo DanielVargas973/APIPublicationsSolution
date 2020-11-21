@@ -1,4 +1,6 @@
-﻿namespace APIPublications.Model.response
+﻿using System;
+
+namespace APIPublications.Model.response
 {
     public class UserResponseModel
     {
@@ -16,5 +18,7 @@
         public string Surnames { get; set; }
         public string Email { get; set; }
         public bool NewUser { get; set; }
+        public string Token { get; set; }
+        public DateTime ExpiresIn { get; set; }
     }
 }
