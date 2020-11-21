@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\APIPublications.Data\APIPublications.Data.csproj" />
+    <ProjectReference Include="..\APIPublications.Entity\APIPublications.Entity.csproj" />
+    <ProjectReference Include="..\APIPublications.Model\APIPublications.Model.csproj" />
+  </ItemGroup>
+
+</Project>
