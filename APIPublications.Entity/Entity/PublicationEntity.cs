@@ -4,6 +4,9 @@ namespace APIPublications.Entity.Entity
 {
     public class PublicationEntity
     {
+        public PublicationEntity()
+        {
+        }
         public PublicationEntity(int idPost, int idUserPost, string publicationTitle, string publicationContent, DateTime creationDate)
         {
             IdPost = idPost;

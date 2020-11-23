@@ -43,6 +43,7 @@ namespace APIPublications.Data.DAO
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                     while (sqlDataReader.Read())
                     {
+                        publicationEntity = new PublicationEntity();
                         publicationEntity.IdPost = Convert.ToInt32(sqlDataReader["IdPost"]);
                         publicationEntity.IdUserPost = Convert.ToInt32(sqlDataReader["IdUserPost"]);
                         publicationEntity.PublicationTitle = Utilities.ValidateNullString(sqlDataReader["PublicationTitle"].ToString());
@@ -80,7 +81,7 @@ namespace APIPublications.Data.DAO
                     sqlCommand.Parameters.AddWithValue("@IdUserPost", publicationEntity.IdUserPost);
                     sqlCommand.Parameters.AddWithValue("@PublicationTitle", Utilities.ValidateNullString(publicationEntity.PublicationTitle));
                     sqlCommand.Parameters.AddWithValue("@PublicationContent", Utilities.ValidateNullString(publicationEntity.PublicationContent));
-                    sqlCommand.Parameters.AddWithValue("@CreationDate", publicationEntity.CreationDate);
+                    sqlCommand.Parameters.AddWithValue("@CreationDate", Utilities.ValidateDate(publicationEntity.CreationDate));
                     sqlCommand.Parameters.AddWithValue("@Action", action);
                     sqlConnection.Open();
                     sqlCommand.ExecuteNonQuery();
